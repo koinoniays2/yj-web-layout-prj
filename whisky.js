@@ -34,6 +34,7 @@ window.addEventListener("load", function () {
       page = 3;
       sessionStorage.setItem('currentPage', page.toString());
       wrap.style.top = page * -100 + 'vh';
+      cognacGsap();
     });
 
     if (e.deltaY > 0) {
@@ -57,6 +58,8 @@ window.addEventListener("load", function () {
       singleMaltGsap();
     }else if (page === 2) {
       scotchGsap();
+    }else if (page === 3) {
+      cognacGsap();
     };
   }, { passive: false });
 
@@ -180,7 +183,29 @@ function scotchGsap() {
       x: 0, opacity: 1
     });
 }
-
+/* ---cognac---------------------------------------- */
+function cognacGsap() {
+  let tl = gsap.timeline();
+  tl.fromTo("#cognac-article > h2 > span", {
+    y: 0,
+  }, {
+    y: -50,
+    stagger: {
+      each: 0.05,
+      from: 'start'
+    },
+    ease: "elastic(1, 2)" //강도0~1, 지속시간
+  },0.5)
+  .to("#cognac-article > h2 > span", {
+    y:0,
+    stagger: {
+      each: 0.05,
+      from: 'start'
+    },
+    ease: "bounce"
+    // ease: "elastic(1, 2)"
+  }, '-=0.7')
+}
   /*
   let vibrationImg = document.querySelector(".malt-img");
   function vibration() {

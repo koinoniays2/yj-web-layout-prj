@@ -58,7 +58,7 @@ nav ul:last-of-type {
     width: 100%; height: 100vh;
     transition: 0.5s;
     position: relative; /* wheel 이벤트 */
-    top: 0vh;
+    top: 0vh; /* wheel 이벤트 */
 }
 /* ---section-main--------------------------------- */
 #main {
@@ -85,6 +85,7 @@ nav ul:last-of-type {
 /* ---section-single-malt--------------------------------- */
 #single-malt {
     width: 100%; height: 100%; display: flex;
+    overflow: hidden;
 }
 #single-malt > div:first-of-type {
     height: 100%; width: 30%;
@@ -156,7 +157,8 @@ nav ul:last-of-type {
 /* ---section-scotch--------------------------------- */
 #scotch {
     width: 100%; height: 100%; display: flex;
-    background-color: #393939;
+    background-color: #333333;
+    overflow: hidden;
 }
 .scotch-type {
     height: 100%; width: 25%;
@@ -213,6 +215,19 @@ nav ul:last-of-type {
 
 /* ---section3--------------------------------- */
 #cognac {
-    width: 100%; height: 100%;
-    background-color: #525252;
+    width: 100%; height: 100%; display: flex; overflow: hidden;
+    background-color: #404040;
 }
+#cognac-article {
+    height: 100%; flex-grow: 1;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    color: #f6f6f6;
+}
+    #cognac-article > h2 {
+        margin: 50px 0;
+        font-size: 6rem; font-family: 'Roboto', sans-serif;
+        color: transparent; font-weight: bold;
+        -webkit-text-stroke: 1px #f6f6f6;
+        display: flex;
+    }
