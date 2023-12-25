@@ -8,35 +8,30 @@ window.addEventListener("load", function () {
   const singleMalt = document.querySelector(".btn1");
   const scotch = document.querySelector(".btn2");
   const cognac = document.querySelector(".btn3");
+  home.addEventListener("click", () => {
+    page = 0;
+    wrap.style.top = page * -100 + 'vh';
+    mainGsap();
+  });
+  singleMalt.addEventListener("click", () => {
+    page = 1;
+    wrap.style.top = page * -100 + 'vh';
+    // singleMaltGsap(vibration);
+    singleMaltGsap();
+  });
+  scotch.addEventListener("click", () => {
+    page = 2;
+    wrap.style.top = page * -100 + 'vh';
+    scotchGsap();
+  });
+  cognac.addEventListener("click", () => {
+    page = 3;
+    wrap.style.top = page * -100 + 'vh';
+    cognacGsap(glass);
+  });
 
   window.addEventListener('wheel', (e) => {
     e.preventDefault();
-    home.addEventListener("click", () => {
-      page = 0;
-      wrap.style.top = page * -100 + 'vh';
-      sessionStorage.setItem('currentPage', page.toString());
-      mainGsap();
-    });
-    singleMalt.addEventListener("click", () => {
-      page = 1;
-      wrap.style.top = page * -100 + 'vh';
-      sessionStorage.setItem('currentPage', page.toString());
-      // singleMaltGsap(vibration);
-      singleMaltGsap();
-    });
-    scotch.addEventListener("click", () => {
-      page = 2;
-      sessionStorage.setItem('currentPage', page.toString());
-      wrap.style.top = page * -100 + 'vh';
-      scotchGsap();
-    });
-    cognac.addEventListener("click", () => {
-      page = 3;
-      sessionStorage.setItem('currentPage', page.toString());
-      wrap.style.top = page * -100 + 'vh';
-      cognacGsap();
-    });
-
     if (e.deltaY > 0) {
       page++;
     } else if (e.deltaY < 0) {
@@ -59,7 +54,7 @@ window.addEventListener("load", function () {
     }else if (page === 2) {
       scotchGsap();
     }else if (page === 3) {
-      cognacGsap();
+      cognacGsap(glass);
     };
   }, { passive: false });
 
@@ -113,7 +108,7 @@ window.addEventListener("load", function () {
         duration:0.3,
         y: 0,
         opacity: 1
-      },)
+      },'-=0.3')
       .fromTo("#single-malt-article > span", {
         y: 300, opacity: 0
       }, {
@@ -156,7 +151,7 @@ function scotchGsap() {
       duration:0.3,
       y: 0,
       opacity: 1
-    },)
+    },'-=0.3')
     .fromTo("#scotch-article > span", {
       y: 300, opacity: 0
     }, {
@@ -184,11 +179,13 @@ function scotchGsap() {
     });
 }
 /* ---cognac---------------------------------------- */
-function cognacGsap() {
+function cognacGsap(callback) {
   let tl = gsap.timeline();
   tl.fromTo("#cognac-article > h2 > span", {
-    y: 0,
+    opacity: 0,
+    y: 0
   }, {
+    opacity: 1,
     y: -50,
     stagger: {
       each: 0.05,
@@ -205,7 +202,42 @@ function cognacGsap() {
     ease: "bounce"
     // ease: "elastic(1, 2)"
   }, '-=0.7')
+  .fromTo(".cognac-glass > img", {
+    opacity: 0
+  },{
+    opacity: 1,
+    onComplete: callback
+  }, '-=1')
+  .fromTo("#cognac-article > span", {
+    y: 300, opacity: 0
+  }, {
+    duration:0.3,
+    y: 0, opacity: 1
+  },'-=0.1')
+  .fromTo(".cognac-type div:nth-child(1)", {
+    scale: 3, opacity: 0, x:500
+  }, {
+    scale: 1, opacity: 1, x:0
+  }, '-=0.1')
+  .fromTo(".cognac-type div:nth-child(2)", {
+    scale: 3, opacity: 0, x:500
+  }, {
+    scale: 1, opacity: 1, x:0
+  })
+  .fromTo(".cognac-type div:nth-child(3)", {
+    scale: 3, opacity: 0, x:500
+  }, {
+    scale: 1, opacity: 1, x:0
+  });
 }
+
+  let glassImg = document.querySelector(".cognac-glass > img");
+  function glass() {
+    glassImg.classList.add("glass");
+    setTimeout(() => {
+      glassImg.classList.remove("glass");
+    }, 500);
+  }
   /*
   let vibrationImg = document.querySelector(".malt-img");
   function vibration() {
@@ -216,3 +248,5 @@ function cognacGsap() {
   };
   */
 });
+// window.addEventListener('beforeunload', function () {
+// });
