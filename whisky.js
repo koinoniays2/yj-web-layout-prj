@@ -213,7 +213,7 @@ function cognacGsap(callback) {
   }, {
     duration:0.3,
     y: 0, opacity: 1
-  },'-=0.1')
+  },'-=0.2')
   .fromTo(".cognac-type div:nth-child(1)", {
     scale: 3, opacity: 0, x:500
   }, {
@@ -223,12 +223,12 @@ function cognacGsap(callback) {
     scale: 3, opacity: 0, x:500
   }, {
     scale: 1, opacity: 1, x:0
-  })
+  }, '-=0.1')
   .fromTo(".cognac-type div:nth-child(3)", {
     scale: 3, opacity: 0, x:500
   }, {
     scale: 1, opacity: 1, x:0
-  });
+  }, '-=0.1');
 }
 
   let glassImg = document.querySelector(".cognac-glass > img");

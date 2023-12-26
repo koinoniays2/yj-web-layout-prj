@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 로고폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        li { list-style: none; }
+        a { text-decoration: none; color: #F6F6F6;
+}
+        /* ---헤더--------------------------------- */
+        header {
+            width: 100%; height: 100px;
+            display: flex; align-items: center; justify-content: center;
+            position: sticky; top: 0px;
+            z-index: 999;
+            transition: background-color 0.3s ease-in-out;
+        }
+        header:hover {
+            background-color: #f6f6f6;
+        }
+        header:hover li, header:hover a {
+            color: #212121;
+        }
+        #logo { 
+        font-family: 'Cinzel', serif;  font-size: 3rem;
+        flex-grow: 1;
+        cursor: pointer;
+        }
+        header nav {
+            width: 90%;
+            display: flex; justify-content: center;
+        }
+        nav ul {
+            display: flex; align-items: center;
+        }
+        nav ul li {
+            padding: 10px; font-size: 0.8rem; color: #F6F6F6;
+        }
+        
+        /* ---바디--------------------------------- */
+        body {
+            background-color: #212121;
+        }
+        #board {
+            width: 100%;
+            height: 80vh;
+            display: flex; justify-content: center; align-items: center;
+        }
+        iframe {
+            height: 90%;
+            width: 70%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div id="logo">
+                <a href="index.html">Whisky</a>
+            </div>
+            <ul>
+                <li>LOGIN</li>
+                <li>JOIN</li>
+            </ul>
+        </nav>
+    </header>
+    <div id="board">
+        <iframe src="http://koinonia.dothome.co.kr/gnuboard/bbs/board.php?bo_table=free"></iframe>
+    </div>
+</body>
+</html>
