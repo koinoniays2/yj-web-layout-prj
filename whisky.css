@@ -26,6 +26,9 @@ header:hover {
 header:hover li, header:hover #logo, header:hover a{
     color: #212121;
 }
+header:hover nav ul:last-of-type li {
+    background-color: black; color: #F6F6F6;
+}
 header nav {
     width: 90%;
     display: flex;
@@ -46,12 +49,16 @@ nav ul:first-of-type {
     nav ul:first-of-type li {
         padding: 10px; font-size: 1.2rem;
     }
-nav ul:last-of-type {
-    flex-grow: 1;
-    justify-content: flex-end;
-}
+    nav ul:last-of-type {
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
     nav ul:last-of-type li{
-        padding: 10px; font-size: 0.8rem;
+        display: flex; justify-content: center;
+        color: #212121; font-weight: bold;
+        margin-right: 10px; width: 70px;
+        border-radius: 30px; background-color: #F6F6F6;
+        padding: 5px; font-size: 0.8rem;
     }
 /* --------------------------------------- */
 #body {
